@@ -6,7 +6,10 @@ pipeline{
         }
     triggers {
         cron('0 * * * *')
-    }   
+    }  
+    parameters {
+        choice(name: 'GOAL', choices: ['complie', 'package', 'clean package'])
+    } 
     stages{
         stage('Source code') {
             steps {
@@ -15,7 +18,7 @@ pipeline{
         }
         stage('Build the code') {
             steps{
-                sh script: 'mvn clean package '
+                sh script: "/opt/apache-maven-3.9.2/bin/mvn ${params.GOAL}
             }
         }
         stage('Reportig and Archiving') {
