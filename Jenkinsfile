@@ -18,7 +18,7 @@ pipeline{
         }
         stage('Build the code') {
             steps{
-                sh script: "/opt/apache-maven-3.9.2/bin/mvn ${params.GOAL}
+                sh script: "/opt/apache-maven-3.9.2/bin/mvn ${params.GOAL}"
             }
         }
         stage('Reportig and Archiving') {
